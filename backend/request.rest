@@ -1,0 +1,17 @@
+POST http://localhost:3003/order/create
+Content-Type: application/json
+
+{
+    "name":"BangChan",
+    "date": "07/10/2022",
+    "products": [{
+        "id": "23",
+        "qty": 4
+    }, {
+        "id": "16",
+        "qty": 1
+    }]
+}
+###
+
+GET http://localhost:3003/products

@@ -1,6 +1,8 @@
 export interface IList {
     id:string,
-    qty:number
+    id_product:string,
+    id_order:string,
+    qty_product:number
 }
 
 export interface ICart {
@@ -62,4 +64,14 @@ export class Products {
         public setQty = (newQty:number) => {
             this.qty = newQty
         }
+}
+
+export interface IcreateOrderDTO {
+    name:string,
+    date: string,
+    products:IlistDTO[]
+}
+export interface IlistDTO {
+    id:string,
+    qty:number
 }
