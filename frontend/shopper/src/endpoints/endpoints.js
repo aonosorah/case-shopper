@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const base_URL = "https://shopper-case.herokuapp.com/"
+const base_URL = "https://shopper-case.herokuapp.com"
 
 export const GetProducts = async () => {
     try {
