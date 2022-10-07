@@ -1,14 +1,21 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goInventory, goOrder } from '../routes/coordinator'
+import logo  from '../assets/shopper.jpg'
+import { MainBox, ImgBox, ButtonBox, Button } from '../style/HomeStyle'
 
 export default function Home() {
     const navigate = useNavigate()
   return (
-    <div>
-        <h1>Este é o começo do fim</h1>
-    <button onClick={() => goOrder(navigate)}>Pedidos</button>
-    <button onClick={() => goInventory(navigate)}>Inventario</button>
-    </div>
+    <MainBox>
+      <ImgBox>
+        <img src={logo}/>
+      </ImgBox>
+       <ButtonBox>
+        <Button onClick={() => goOrder(navigate)}>Pedidos</Button>
+        <Button onClick={() => goInventory(navigate)}>Inventario</Button>
+      </ButtonBox>
+    
+    </MainBox>
   )
 }
