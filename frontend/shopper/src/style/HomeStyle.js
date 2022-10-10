@@ -25,4 +25,5 @@ width: 100px;
 height: 100px;
 border-radius: 100px;
 font-weight: bold;
+font-family:'Trebuchet MS';
 `

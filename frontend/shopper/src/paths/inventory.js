@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goOrder, goHome } from '../routes/coordinator'
 import logo from '../assets/shopper.jpg'
-import { MainBox, H3, Img, ButtonBox, PProduct, PTitle, Qty, Name, Button, ProductBox, Table } from '../style/InventoryStyle'
+import { MainBox, H3, Img, ButtonBox, PProduct, PTitle, Name, Button, ProductBox, Table } from '../style/InventoryStyle'
 import { GetProducts } from '../endpoints/endpoints'
 
 export default function Inventory() {
@@ -16,10 +16,9 @@ export default function Inventory() {
     product()
     }, [])
     const showProduct = item?.map((product) => {
-      return <Table key={product.id}>
-        <Name><PProduct>{product.name}</PProduct></Name>
-        <Qty><PProduct>{product.qty_stock}</PProduct></Qty>
-      </Table>
+      return  <Name key={product.id}><PProduct>{product.name}</PProduct>
+        <PProduct>{product.qty_stock}</PProduct></Name> 
+     
     })
  console.log(item)
     return (
@@ -32,13 +31,14 @@ export default function Inventory() {
     </ButtonBox>
    </MainBox>
    <ProductBox>
-    <H3> Lista de Produtos </H3>
+    <H3> ESTOQUE </H3>
     <Table>
-      <Name><PTitle>PRODUTOS</PTitle></Name>
-      <Qty><PTitle>QUANTIDADE</PTitle></Qty>
+      <thead><Name><PTitle>PRODUTOS</PTitle>
+      <PTitle>QUANTIDADE</PTitle></Name></thead>
+      <tbody>{showProduct}</tbody>
       
     </Table>
-      {showProduct}
+      
    </ProductBox>
    </>
   )

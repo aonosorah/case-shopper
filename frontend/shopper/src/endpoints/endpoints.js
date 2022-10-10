@@ -13,6 +13,6 @@ export const GetProducts = async () => {
 export const CreateOrder = async (body) => {
     try {
          await axios
-        .post(`${base_URL}/create/order`, body)
+        .post(`${base_URL}/order/create`, body)
     } catch (err) { alert( "Algum dado pode estar faltando, por favor, tente novamente" )}
 }
