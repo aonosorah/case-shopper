@@ -5,6 +5,7 @@ display: flex;
 justify-content: space-between;
 margin: 10px;
 font-family:'Trebuchet MS';
+height: 100px;
 `
 export const ButtonBox = styled.div`
 display: flex;
@@ -37,7 +38,6 @@ padding: 3px;
 color: white;
 `
 export const Name = styled.tr`
-/* width: 150px; */
 background-color: #3d3d5e;
 
 `

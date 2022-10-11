@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goOrder, goHome } from '../routes/coordinator'
-import logo from '../assets/shopper.jpg'
+import logo from '../assets/shopper.png'
 import { MainBox, H3, Img, ButtonBox, PProduct, PTitle, Name, Button, ProductBox, Table } from '../style/InventoryStyle'
 import { GetProducts } from '../endpoints/endpoints'
 

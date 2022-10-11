@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goInventory, goHome } from '../routes/coordinator'
-import logo from '../assets/shopper.jpg'
-import { MainBox, Img, ButtonBox, Button } from '../style/InventoryStyle'
-import { Cart, TotalBox, Container, Total, Orders, ProdBox, ProTittle, ShowProducts, AdDel, Buttons, CartButton } from '../style/OrderStyle'
+import logo from '../assets/shopper.png'
+import { MainBox, Img,  ButtonBox, Button } from '../style/InventoryStyle'
+import { Cart, TotalBox, Label, LineCart, RemButton, PCart, CartTittle, Form, Container, Total, Orders, ProdBox, Input, ProTittle, ShowProducts, AdDel, Buttons, CartButton } from '../style/OrderStyle'
 import { CreateOrder, GetProducts } from '../endpoints/endpoints'
 
 export default function Order() {
@@ -44,10 +44,12 @@ export default function Order() {
         return item }).filter((item) =>{ return item.qty > 0 })
       setOrd(del) }
    const inCart = ord.map((item) => { return <div key={item.id}>
-      <p>{item.name}</p>
-      <p>{item.price.toLocaleString( "pt-BR", config )}</p>
-      <p>{item.qty}</p>
-      <button onClick={ () => delItem(item.id) }>Remover Todos</button>
+      <PCart>{item.name}</PCart>
+      <LineCart>  <PCart>{item.price.toLocaleString( "pt-BR", config )}</PCart>
+      <PCart>{item.qty} un.</PCart>
+      <RemButton onClick={ () => delItem(item.id) }>Remover</RemButton> </LineCart>
+    
+     
     </div> })
   const onName = (event) => { setClient(event.target.value) }
   const onDate = (event) => { setDate(event.target.value)}
@@ -79,16 +81,18 @@ console.log(body);
    <Orders>
    <ShowProducts> {showProd} </ShowProducts> 
     <Cart>
-      <p>Carrinho</p>
-      <form onSubmit={finalOrder}>
-      <input onChange={onName} placeholder={"Nome"} value={client} required/>
-      <input onChange={onDate} type={"date"} min={new Date().toISOString().slice(0,10)} value={date} required/> 
+      <CartTittle>Carrinho</CartTittle>
+      <Form onSubmit={finalOrder}>
+      <Label htmlFor='name'>Nome do Cliente</Label>
+      <Input id="name" onChange={onName} placeholder={"Insira seu nome"} value={client} required/>
+      <Label htmlFor='date'> Data de entrega: </Label>
+      <Input id="date" onChange={onDate} type={"date"} min={new Date().toISOString().slice(0,10)} value={date} required/> 
       {inCart}
       <TotalBox>
       <Total>Valor Total:{fixedPrice}</Total>
       <CartButton onClick={() => {setOrd([])}} type={"button"}>Esvaziar Carrinho</CartButton>
       <CartButton type={"submit"}> Finalizar Pedido </CartButton>
-      </TotalBox> </form>
+      </TotalBox> </Form>
     </Cart>
     </Orders>
   </Container>
